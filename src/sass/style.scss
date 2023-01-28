@@ -1,0 +1,9 @@
+@import 'libs/bootstrap-reboot.min';
+@import 'base/mixins';
+@import 'base/variables';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

@@ -8,4 +8,6 @@ $('div').click(function() {
     console.log($(this).index());
 });
 
-console.log($('div').find('.more'));
+// console.log($('div').find('.more'));
+
+console.log($('.some').eq(0).siblings());

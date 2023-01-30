@@ -1,7 +1,7 @@
 import $ from './lib/lib';
 
 $('button').click(() => {
-    $('div').eq(2).toggleClass('active');
+    $('.findme').fadeToggle(800);
 });
 
 // console.log($('div').find('.more'));

@@ -13,15 +13,17 @@ $.prototype.html = function (content) {
 };
 
 $.prototype.eq = function (i) {
-    const swap = this[i];
-    const objLength = Object.keys(this).length;
+    if (this[i]) {
+        const swap = this[i];
+        const objLength = Object.keys(this).length;
 
-    for (let i = 0; i < objLength; i++) {
-        delete this[i];
+        for (let i = 0; i < objLength; i++) {
+            delete this[i];
+        }
+
+        this[0] = swap;
+        this.length = 1;
     }
-
-    this[0] = swap;
-    this.length = 1;
 
     return this;
 };

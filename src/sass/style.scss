@@ -1,21 +1,9 @@
 @import 'libs/bootstrap-reboot.min';
-@import 'base/mixins';
-@import 'base/variables';
+@import './general/base';
+@import './general/variables';
+@import './general/typography';
+@import './components/button.scss';
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-button {
-    width: 150px;
-    height: 40px;
-    background-color: lightblue;
-    text-align: center;
-}
-
-.active {
-    font-size: 20px;
-    color: red;
+    color: $danger;
 }

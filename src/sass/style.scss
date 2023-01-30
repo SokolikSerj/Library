@@ -1,8 +1,8 @@
-@import 'libs/bootstrap-reboot.min';
 @import './general/base';
 @import './general/variables';
 @import './general/typography';
-@import './components/button.scss';
+@import './components/ui.scss';
+@import './helpers/classes.scss';
 
 * {
     color: $danger;

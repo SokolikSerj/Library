@@ -6,6 +6,9 @@ $.prototype.dropdown = function() {
         $(this[i]).click(() => {
             $(`[data-toggle-id="${id}"]`).fadeToggle(300);
         });
+        $(this[i]).on('blur', () => {
+            $(`[data-toggle-id="${id}"]`).fadeToggle(300);
+        });
     }
 };
 

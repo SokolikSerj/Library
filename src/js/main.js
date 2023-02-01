@@ -36,3 +36,4 @@ $('#trigger').click(() => $('#trigger').createModal({
 $('[data-tabpanel] .tab-item').tab();
 $('.dropdown-toggle').dropdown();
 $('[data-toggle="modal"]').modal();
+$('.accordion-head').accordion();

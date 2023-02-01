@@ -80,7 +80,6 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.modal = function (create
     });
   }
 };
-(0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])('[data-toggle="modal"]').modal();
 _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.createModal = function () {
   let {
     text,
@@ -625,6 +624,7 @@ __webpack_require__.r(__webpack_exports__);
 }));
 (0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('[data-tabpanel] .tab-item').tab();
 (0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.dropdown-toggle').dropdown();
+(0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('[data-toggle="modal"]').modal();
 })();
 
 /******/ })()

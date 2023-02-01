@@ -32,3 +32,6 @@ $('#trigger').click(() => $('#trigger').createModal({
         ]
     }
 }));
+
+$('[data-tabpanel] .tab-item').tab();
+$('.dropdown-toggle').dropdown();

@@ -32,9 +32,11 @@ $.prototype.modal = function (created) {
                 $(target).fadeOut(500);
                 document.body.style.overflow = '';
                 document.body.style.marginRight = 0;
-                if (created) {
-                    document.querySelector(target).remove();
-                }
+                setTimeout(() => {
+                    if (created) {
+                        document.querySelector(target).remove();
+                    }
+                }, 510);
             });
         });
 
@@ -43,9 +45,11 @@ $.prototype.modal = function (created) {
                 $(target).fadeOut(500);
                 document.body.style.overflow = '';
                 document.body.style.marginRight = 0;
-                if (created) {
-                    document.querySelector(target).remove();
-                }
+                setTimeout(() => {
+                    if (created) {
+                        document.querySelector(target).remove();
+                    }
+                }, 510);
             }
         });
     }

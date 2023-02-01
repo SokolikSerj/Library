@@ -91,9 +91,11 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.modal = function (create
         (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])(target).fadeOut(500);
         document.body.style.overflow = '';
         document.body.style.marginRight = 0;
-        if (created) {
-          document.querySelector(target).remove();
-        }
+        setTimeout(() => {
+          if (created) {
+            document.querySelector(target).remove();
+          }
+        }, 510);
       });
     });
     (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])('.modal').click(e => {
@@ -101,9 +103,11 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.modal = function (create
         (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])(target).fadeOut(500);
         document.body.style.overflow = '';
         document.body.style.marginRight = 0;
-        if (created) {
-          document.querySelector(target).remove();
-        }
+        setTimeout(() => {
+          if (created) {
+            document.querySelector(target).remove();
+          }
+        }, 510);
       }
     });
   }

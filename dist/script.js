@@ -175,9 +175,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
 
 _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.slider = function () {
-  let autoplay = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-  let speed = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  let delay = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+  let {
+    autoplay = false,
+    speed = 1,
+    delay = 1
+  } = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   for (let i = 0; i < this.length; i++) {
     const width = window.getComputedStyle(this[i].querySelector('.slider_inner')).width;
     const slides = this[i].querySelectorAll('.slider_item');
@@ -194,7 +196,7 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.slider = function () {
       delay = speed;
     }
     slidesField.style.transition = `all ${delay}s`;
-    function toNextSlide() {
+    const toNextSlide = () => {
       if (offset == +width.replace(/\D/g, '') * (slides.length - 1)) {
         offset = 0;
       } else {
@@ -208,8 +210,8 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.slider = function () {
       }
       dots.forEach(item => item.classList.remove('active'));
       dots[slideIndex].classList.add('active');
-    }
-    function toPrevSlide() {
+    };
+    const toPrevSlide = () => {
       if (offset == 0) {
         offset = +width.replace(/\D/g, '') * (slides.length - 1);
       } else {
@@ -223,15 +225,15 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.slider = function () {
       }
       dots.forEach(item => item.classList.remove('active'));
       dots[slideIndex].classList.add('active');
-    }
-    function autoPlaySlides() {
+    };
+    const autoPlaySlides = () => {
       intervalSlides = setInterval(toNextSlide, speed * 1000);
-    }
-    function stopPlaySlides() {
+    };
+    const stopPlaySlides = () => {
       if (intervalSlides) {
         clearInterval(intervalSlides);
       }
-    }
+    };
     (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i].querySelector('[data-slide="next"]')).click(e => {
       e.preventDefault();
       toNextSlide();
@@ -254,6 +256,93 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.slider = function () {
       this[i].addEventListener('mouseenter', stopPlaySlides);
       this[i].addEventListener('mouseleave', autoPlaySlides);
     }
+  }
+};
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.createSlider = function () {
+  let {
+    id = 'newSlide',
+    dots = true,
+    prev = true,
+    next = true,
+    items,
+    autoplay = true,
+    speed = 1,
+    delay = 1
+  } = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  for (let i = 0; i < this.length; i++) {
+    // Задание параметров основного блок слайдера
+    this[i].classList.add('slider');
+    this[i].setAttribute('id', id);
+
+    // Создание блока индикаторов-точек
+    const indicators = document.createElement('ol');
+    indicators.classList.add('slider_indicators');
+    for (let j = 0; j < items.length; j++) {
+      let dot = document.createElement('li');
+      if (j === 0) {
+        dot.classList.add('active');
+      }
+      dot.setAttribute('data-slide-to', `${j}`);
+      indicators.append(dot);
+    }
+
+    // Создание блока со слайдерами
+    const innerTag = document.createElement('div');
+    const slidesTag = document.createElement('div');
+    innerTag.classList.add('slider_inner');
+    slidesTag.classList.add('slider_slides');
+    for (let j = 0; j < items.length; j++) {
+      let slide = document.createElement('div');
+      slide.classList.add('slider_item');
+      slide.innerHTML = `
+                <img src="${items[j].src}" alt="${items[j].alt}">
+            `;
+      slidesTag.append(slide);
+    }
+    innerTag.append(slidesTag);
+
+    // Создание кнопки "назад"
+    const prevTag = document.createElement('a');
+    prevTag.classList.add('slider_prev');
+    prevTag.setAttribute('href', '#');
+    prevTag.setAttribute('data-slide', 'prev');
+    prevTag.innerHTML = `
+            <span class="slider_prev-icon">&lt;</span>
+        `;
+
+    // Создание кнопки "вперед"
+    const nextTag = document.createElement('a');
+    nextTag.classList.add('slider_next');
+    nextTag.setAttribute('href', '#');
+    nextTag.setAttribute('data-slide', 'next');
+    nextTag.innerHTML = `
+            <span class="slider_next-icon">&gt;</span>
+        `;
+
+    // Добавление точек под слайдером если dots: true
+    if (dots) {
+      this[i].append(indicators);
+    }
+
+    // Добавление кнопки "назад" если prev: true
+    if (prev) {
+      this[i].append(prevTag);
+    }
+
+    // Добавление кнопки "вперед" если next: true
+    if (next) {
+      this[i].append(nextTag);
+    }
+
+    // Добавление слайдов в карусель
+    this[i].append(innerTag);
+
+    // Вызов слайдера с помощью ранее созданное функции
+    (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).slider({
+      autoplay: autoplay,
+      speed: speed,
+      delay: delay
+    });
   }
 };
 
@@ -756,7 +845,30 @@ __webpack_require__.r(__webpack_exports__);
 (0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.dropdown-toggle').dropdown();
 (0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('[data-toggle="modal"]').modal();
 (0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.accordion-head').accordion();
-(0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.slider').slider(true, 5, 2);
+(0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.slider').slider({
+  autoplay: true,
+  speed: 5,
+  delay: 2
+});
+(0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.test').createSlider({
+  id: 'fuckenshit',
+  dots: true,
+  prev: true,
+  next: true,
+  items: [{
+    src: "https://cdn.meta.ua/meta_news/d8/01001in1-d887.jpeg",
+    alt: "Huy"
+  }, {
+    src: "https://i.ytimg.com/vi/lsKAkcOwiq0/maxresdefault.jpg",
+    alt: "Huy2"
+  }, {
+    src: "https://rau.ua/wp-content/uploads/2018/09/40157794_923785607831878_144863367083851776_n.jpg",
+    alt: "Huy3"
+  }, {
+    src: "https://drohobych.city/upload/article/o_1fv3mgdlgb4uj9bppk10qt12eg7h.jpg",
+    alt: 'Chlen'
+  }]
+});
 })();
 
 /******/ })()

@@ -37,3 +37,4 @@ $('[data-tabpanel] .tab-item').tab();
 $('.dropdown-toggle').dropdown();
 $('[data-toggle="modal"]').modal();
 $('.accordion-head').accordion();
+$('.slider').slider(true, 5, 2);

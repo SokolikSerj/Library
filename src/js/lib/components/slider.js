@@ -178,3 +178,32 @@ $.prototype.createSlider = function({id = 'newSlide', dots = true, prev = true, 
         });
     }
 };
+
+
+
+/* Пример параметров для создания слайдера:
+
+{
+    id: 'fuckenshit',
+    dots: true,
+    prev: true,
+    next: true,
+    items: [
+        {
+            src: "https://cdn.meta.ua/meta_news/d8/01001in1-d887.jpeg",
+            alt: "Huy"
+        },
+        {
+            src: "https://i.ytimg.com/vi/lsKAkcOwiq0/maxresdefault.jpg",
+            alt: "Huy2"
+        },
+        {
+            src: "https://rau.ua/wp-content/uploads/2018/09/40157794_923785607831878_144863367083851776_n.jpg",
+            alt: "Huy3"
+        },
+        {
+            src: "https://drohobych.city/upload/article/o_1fv3mgdlgb4uj9bppk10qt12eg7h.jpg",
+            alt: 'Chlen'
+        }
+    ]
+} */

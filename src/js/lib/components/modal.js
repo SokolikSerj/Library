@@ -103,3 +103,38 @@ $.prototype.createModal = function ({ text, btns } = {}) {
         $(this[i].getAttribute('data-target')).fadeIn(500);
     }
 };
+
+/* Пример параметров для создания модального окна:
+
+/* {
+    text: {
+        title: 'Modal huy chlen',
+        body: 'Kjksdjds JKSdjks dksd sdjdhshjdgshjgdfhsfg wuf7gffgdhfjsgdhf dhftgyewgfdhsjfdhjsgfhdsgfhsgfhjbsdgfdsdsdds'
+    },
+    btns: {
+        count: 3,
+        settings: [
+            [
+                'Close',
+                ['btn-danger', 'mr10'],
+                true
+            ],
+            [
+                'Save changes',
+                ['btn-success', 'mr10'],
+                false,
+                () => {
+                    alert('Huy');
+                }
+            ],
+            [
+                'Another button',
+                ['btn-dark', 'ml10'],
+                false,
+                () => {
+                    alert('Pesda');
+                }
+            ]
+        ]
+    }
+} */
